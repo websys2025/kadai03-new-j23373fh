@@ -34,7 +34,17 @@
 
             // 商品購入の関数
             function buyItem(no) {
-                // ここにコードを書く
+                const item = items.find(item => item.id === no);
+                if (!item) {
+                    console.log(no+"は無効な商品番号です。番号は1～8で指定してください。");
+                    return;
+                }
+                if (item.stock > 0) {
+                    console.log("商品番号: " +item.id+",", "商品名: " + item.name+"を購入します。");
+                    item.stock--;
+                } else {
+                    console.log("商品番号: " +item.id+",", "商品名: " + item.name+"の在庫がありません。");
+                }// ここにコードを書く
                 showItemList(); // 商品一覧の表示関数呼び出し
             }
 
